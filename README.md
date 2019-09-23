@@ -9,6 +9,6 @@ Task：Use V-rep simulator to do some basic robot movement and sensor measuremen
 ## **2 Methods**
 
 - Download the V-rep and open it with
-'''
- ./vrep .sh
-'''
+(```)
+    $ ./vrep .sh
+(```)
