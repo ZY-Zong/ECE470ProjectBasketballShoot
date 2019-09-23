@@ -26,3 +26,12 @@ V-REP_PRO_EDU_V3_6_2_Mac/programming/remoteApiBindings/python/python
 - The script code is in the file ```example.py```. This file is based on the codes of the example given by ece470_vrep_Linux.
 
 ## **3 Script Codes**
+
+- Make a martix of the position, which is the angle of every joint. 
+```
+
+```
+- Then use SetJointPosition function to move the UR3 in simulator. The SetJointPosition function is 
+formed by simxSetJointTargetPosition function, which can move only one joint in a particular angle
+SetJointPosition function call simxSetJointTargetPosition function 6 time for the 6 joints. The three calls
+set the six joints for three times.
