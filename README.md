@@ -6,5 +6,9 @@ This is update 2 for ECE 470 project.
 
 Task：Use V-rep simulator to do some basic robot movement and sensor measurements.
 
-## * 2 Methods *
+## **2 Methods**
 
+- Download the V-rep and open it with
+'''
+ ./vrep .sh
+'''
