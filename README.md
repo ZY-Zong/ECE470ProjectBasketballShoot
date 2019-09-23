@@ -29,9 +29,18 @@ V-REP_PRO_EDU_V3_6_2_Mac/programming/remoteApiBindings/python/python
 
 - Make a martix of the position, which is the angle of every joint. 
 ```
-
+Goal_joint_angles = np.array([[0,0.5*np.pi,-0.5*np.pi,0.5*np.pi,-0.5*np.pi,np.pi], \
+							  [-0.5*np.pi,0,-0.5*np.pi,0,0.5*np.pi,-0.5*np.pi],\
+							  [0.5*np.pi,-0.5*np.pi,-0.5*np.pi,0,0,-0.5*np.pi]])
 ```
 - Then use SetJointPosition function to move the UR3 in simulator. The SetJointPosition function is 
 formed by simxSetJointTargetPosition function, which can move only one joint in a particular angle
 SetJointPosition function call simxSetJointTargetPosition function 6 time for the 6 joints. The three calls
 set the six joints for three times.
+```
+for i in range(3):
+	SetJointPosition(Goal_joint_angles[i])
+	time.sleep(2)
+```
+
+## Video can be found [here](https://www.youtube.com/watch?v=oTiXtuupihU&feature=youtu.be). 
