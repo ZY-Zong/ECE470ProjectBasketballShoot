@@ -17,7 +17,7 @@ Task：Use V-rep simulator to do some basic robot movement and sensor measuremen
 
 > - Delete default child script from the robot because we will run the script with outside python code.
 
-- Make sure the documents ```vrep.py```, ```vrepConst``` and ```remoteApi.so``` are in the path:
+- Make sure the documents ```vrep.py```, ```vrepConst``` and ```remoteApi.dylib``` are in the path:
 
 ```
 V-REP_PRO_EDU_V3_6_2_Mac/programming/remoteApiBindings/python/python
