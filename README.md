@@ -1,6 +1,8 @@
 # ECE470ProjectBasketballShoot
-Group members：Yiqun Niu, Jieting Chen, Zhenyu Zong, Xiang Li
+Group members：Yiqun Niu, Zhenyu Zong, Xiang Li
 This is update 2 for ECE 470 project.
+
+## One previous group member dropped the course, so we only have three members in the group
 
 ## **1 Introduction**
 
