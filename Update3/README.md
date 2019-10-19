@@ -11,7 +11,7 @@ Task：Demonstrate forward kinematics and progress towards getting our robot to 
 
 ## **2 Methods**
 
-- Make sure the documents ```vrep.py```, ```vrepConst.py``` and ```remoteApi.dll```(remoteApi.all for Window, for Mac users use remoteApi.dylib) are in the path:
+- Make sure the documents ```vrep.py```, ```vrepConst.py``` and ```remoteApi.dll```(remoteApi.all for Window, for Mac users use ```remoteApi.dylib```) are in the path:
 
 ```
 vrep_folder/programming/remoteApiBindings/
