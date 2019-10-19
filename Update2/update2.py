@@ -5,6 +5,11 @@ from math import cos, sin
 from scipy.linalg import expm,logm
 
 
+### Global variables
+grap_state = 0
+
+
+# ================================== Forward kinematics function  ===================================== #
 
 def getS_screw(S,i):
 	screw_i = np.array([[0,        -S[2][i], S[1][i],      S[3][i]],
@@ -34,6 +39,39 @@ def forward_k(theta):
 	print("Foward kinematics calculated:\n")	
 	print(str(T) + "\n")
 	return
+
+# ======================================================================================================== #
+
+# ========================================= Jaco Hand function =========================================== #
+def JacoHandGrap():
+	# input
+	input_invalid = 1
+	while(input_invalid):
+		input_msg = input("grap or release? (please enter grap or release)")
+		if((input_msg=="grap") | (input_msg=="release")):
+			input_invalid = 0
+		else:
+			print("invalid input!\n")
+
+	# grap
+	if (input_msg == "grap"):
+		if (grap_state == 0):
+			vrep.simxSetStringSignal(clientID,'jacoHand','true',vrep.simx_opmode_oneshot)
+			grap_state = 1
+		else:
+			print("Already grapped. Ignore your command.")
+			return
+
+	# release
+	if (input_msg == "release"):
+		if (grap_state == 1):
+			vrep.simxSetStringSignal(clientID,'jacoHand','false',vrep.simx_opmode_oneshot)
+			grap_state = 0
+		else:
+			print("Already release. Ignore your command.")
+			return
+
+# ======================================================================================================== #
 
 
 # Get distances measurements from each joint center to base frame (useful for forward kinematics)
@@ -170,35 +208,9 @@ vrep.simxStartSimulation(clientID, vrep.simx_opmode_oneshot)
 # ******************************** Your robot control code goes here  ******************************** #
 time.sleep(1)
 
-home = np.radians([167.22, -73.48, 70.54, -86.48, -89.78, 47.20])
-
-# Q11 = np.radians([155.82, -52.67, 86.82, -122.89, -89.2, 35.68])
-# Q12 = np.radians([156.07, -47.04, 87.12, -128.81, -89.2, 36.01])
-# Q13 = np.radians([156.06, -40.99, 87.99, -135.74, -89.2, 36.09])
-
-# Q21 = np.radians([171.8, -51.51, 86.13, -123.39, -88.86, 51.66])
-# Q22 = np.radians([171.77, -46.69, 88.03, -130.12, -88.86, 51.73])
-# Q23 = np.radians([171.82, -41.76, 87.79, -134.81, -88.86, 51.83])
-
-# Q31 = np.radians([187.66, -45.44, 74.48, -117.94, -88.53, 67.46])
-# Q32 = np.radians([187.64, -41.64, 76.28, -123.55, -88.53, 67.53])
-# Q33 = np.radians([187.63, -36.09, 77.17, -129.98, -88.56, 67.6])
-
-# Q = [ [Q11, Q12, Q13], \
-#       [Q21, Q22, Q23], \
-#       [Q31, Q32, Q33] ]
-
-
-# Goal_joint_angles = np.array([[0,0.5*np.pi,-0.5*np.pi,0.5*np.pi,-0.5*np.pi,np.pi], \
-# 							  [-0.5*np.pi,0,-0.5*np.pi,0,0.5*np.pi,-0.5*np.pi],\
-# 							  [0.5*np.pi,-0.5*np.pi,-0.5*np.pi,0,0,-0.5*np.pi]])
-# for i in range(3):
-# 	SetJointPosition(Goal_joint_angles[i])
-# 	time.sleep(2)
-
 pi = np.pi
 Goal_joint_angles = np.array([0,pi/2,0.,0.,0.,0.])
-SetJointPosition(Goal_joint_angles)    
+SetJointPosition(Goal_joint_angles)
 
 # Wait two seconds
 time.sleep(3)
@@ -220,7 +232,11 @@ while(j<10):
 		command[i] = command[i] + (float(input_angle[i])*pi)/180
 	SetJointPosition(command)
 	forward_k(command)
-	j+=1;
+
+	# grap open or close #
+	JacoHandGrap()
+
+	j+=1
 print("your 10 chances are over, simulation will stop\n")
 
 # Stop simulation
