@@ -5,10 +5,6 @@ from math import cos, sin
 from scipy.linalg import expm,logm
 
 
-### Global variables
-grap_state = 0
-
-
 # ================================== Forward kinematics function  ===================================== #
 
 def getS_screw(S,i):
@@ -232,6 +228,9 @@ while(j<10):
 		command[i] = command[i] + (float(input_angle[i])*pi)/180
 	SetJointPosition(command)
 	forward_k(command)
+	
+        ### Global variables
+        global grap_state = 0
 
 	# grap open or close #
 	JacoHandGrap()
