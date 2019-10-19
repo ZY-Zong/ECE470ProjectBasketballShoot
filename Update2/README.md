@@ -22,7 +22,7 @@ vrep_folder/programming/remoteApiBindings/
 
 ### 2.2 JacoHand Gripper
 
-- The hand is based on child script. In JacoHand's child script file, we need to do some changes for enabling the hand to open and close. Code comes from this [website](http://www.forum.coppeliarobotics.com/viewtopic.php?f=9&t=1891#p8135).
+- The hand is based on child script. In JacoHand's child script file, we need to do some changes for enabling the hand to open and close. Codes are referenced from this [website](http://www.forum.coppeliarobotics.com/viewtopic.php?f=9&t=1891#p8135).
 
 ```
 sig=sim.getStringSignal('jacoHand')
@@ -32,7 +32,7 @@ if sig~=nil then
 end
 ```
 
-- Then enable the ```JacoHand``` to grap and release things. In ```update2.py``` Send the command to ```Jaco Hand``` with codes:
+- Then enable the ```JacoHand``` to grap and release things. In ```update2.py``` file ```JacoHandGrap``` function, send the command to ```JacoHand``` with codes:
 
 ```
 vrep.simxSetStringSignal(clientID,'jacoHand','true',vrep.simx_opmode_oneshot)
