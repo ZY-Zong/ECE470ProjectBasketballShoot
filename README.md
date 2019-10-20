@@ -40,3 +40,31 @@ for i in range(3):
 	SetJointPosition(Goal_joint_angles[i])
 	time.sleep(2)
 ```
+
+## **UPDATE 3** 
+[video](https://youtu.be/Z8ZXQPDpTU8)
+
+### **Forward Kinematics**
+
+- The script code is in the file ```update3.py```. Run the code in a terminal with the Vrep simulator open, the arm will initialize its position and take commands from the user. The user should type in six angles in degrees which be added to the current angle to move the UR3 arm. You have at most ten chances to try to move the arm. The transform matrix from the home position to the new position will be printed on the screen, which demostrates forward kinematics.
+
+### **JacoHand Gripper**
+
+- The hand is based on child script. In JacoHand's child script file, we need to do some changes for enabling the hand to open and close. Codes are referenced from this [website](http://www.forum.coppeliarobotics.com/viewtopic.php?f=9&t=1891#p8135).
+
+```
+sig=sim.getStringSignal('jacoHand')
+if sig~=nil then
+simClearStringSignal('jacoHand')
+if sig=='true' then closing=true else closing=false end
+end
+```
+
+- Then enable the ```JacoHand``` to grasp and release things. In ```update3.py``` file ```JacoHandGrasp``` function, send the command to ```JacoHand``` with codes:
+
+```
+vrep.simxSetStringSignal(clientID,'jacoHand','true',vrep.simx_opmode_oneshot)
+vrep.simxSetStringSignal(clientID,'jacoHand','false',vrep.simx_opmode_oneshot)
+```
+
+- These instructions can open and close the hand.
