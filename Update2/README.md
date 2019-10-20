@@ -17,7 +17,7 @@ Task：Use V-rep simulator to do some basic robot movement and sensor measuremen
 ```
 - Choose ```UR3.ttm``` and ```Jaco hand.ttm``` models from Model browser, connect them with Assemble / Disassemble icon. The scene is saved as ```Update2Scene.tttt``` file.
 
-> - Delete default child script from the robot because we will run the script with outside python code.
+- Delete default child script from the robot because we will run the script with outside python code.
 
 - Make sure the documents ```vrep.py```, ```vrepConst.py``` and ```remoteApi.dylib``` are in the path:
 
