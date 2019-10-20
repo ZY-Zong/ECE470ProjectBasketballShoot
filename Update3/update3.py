@@ -218,6 +218,8 @@ time.sleep(3)
 # *************************************************************************************************** #
 
 command = np.array([0,0,0,0,0,0])
+
+#close the Jaco hand at first#
 vrep.simxSetStringSignal(clientID,'jacoHand','false',vrep.simx_opmode_oneshot)
 j=0
 while(j<10):
@@ -233,9 +235,6 @@ while(j<10):
 		command[i] = command[i] + (float(input_angle[i])*pi)/180
 	SetJointPosition(command)
 	forward_k(command)
-	
-        ### Global variables
-
 
 
 	# grap open or close #
