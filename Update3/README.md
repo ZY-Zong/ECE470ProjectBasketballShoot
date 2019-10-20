@@ -28,12 +28,12 @@ vrep_folder/programming/remoteApiBindings/
 ```
 sig=sim.getStringSignal('jacoHand')
 if sig~=nil then
-	simClearStringSignal('jacoHand')
-	if sig=='true' then closing=true else closing=false end
+simClearStringSignal('jacoHand')
+if sig=='true' then closing=true else closing=false end
 end
 ```
 
-- Then enable the ```JacoHand``` to grap and release things. In ```update3.py``` file ```JacoHandGrap``` function, send the command to ```JacoHand``` with codes:
+- Then enable the ```JacoHand``` to grasp and release things. In ```update3.py``` file ```JacoHandGrasp``` function, send the command to ```JacoHand``` with codes:
 
 ```
 vrep.simxSetStringSignal(clientID,'jacoHand','true',vrep.simx_opmode_oneshot)
@@ -43,4 +43,4 @@ vrep.simxSetStringSignal(clientID,'jacoHand','false',vrep.simx_opmode_oneshot)
 - These instructions can open and close the hand.
 
 ## 3 Video 
-Video can be found [here](https://www.youtube.com/watch?v=oTiXtuupihU&feature=youtu.be). 
+Video can be found [here](https://youtu.be/Z8ZXQPDpTU8). 
