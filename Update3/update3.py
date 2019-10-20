@@ -37,9 +37,11 @@ def forward_k(theta):
 	return
 
 # ======================================================================================================== #
-
+grap_state = 0
 # ========================================= Jaco Hand function =========================================== #
 def JacoHandGrap():
+	global grap_state
+
 	# input
 	input_invalid = 1
 	while(input_invalid):
@@ -48,12 +50,15 @@ def JacoHandGrap():
 			input_invalid = 0
 		else:
 			print("invalid input!\n")
-
+	
 	# grap
 	if (input_msg == "grap"):
 		if (grap_state == 0):
+
 			vrep.simxSetStringSignal(clientID,'jacoHand','true',vrep.simx_opmode_oneshot)
+			time.sleep(1)
 			grap_state = 1
+
 		else:
 			print("Already grapped. Ignore your command.")
 			return
@@ -213,7 +218,7 @@ time.sleep(3)
 # *************************************************************************************************** #
 
 command = np.array([0,0,0,0,0,0])
-
+vrep.simxSetStringSignal(clientID,'jacoHand','false',vrep.simx_opmode_oneshot)
 j=0
 while(j<10):
 	invalid = 1
@@ -230,7 +235,8 @@ while(j<10):
 	forward_k(command)
 	
         ### Global variables
-        global grap_state = 0
+
+
 
 	# grap open or close #
 	JacoHandGrap()
