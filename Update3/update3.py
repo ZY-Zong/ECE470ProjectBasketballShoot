@@ -115,9 +115,9 @@ def get_joint():
 
 # Function that used to move joints
 def SetJointPosition(theta):
-	vrep.simxSetJointTargetPosition(clientID, joint_one_handle, theta[0], vrep.simx_opmode_oneshot)
+	vrep.simxSetJointTargetPosition(clientID, joint_one_handle, theta[0]-pi/2, vrep.simx_opmode_oneshot)
 	time.sleep(0.5)
-	vrep.simxSetJointTargetPosition(clientID, joint_two_handle, theta[1], vrep.simx_opmode_oneshot)
+	vrep.simxSetJointTargetPosition(clientID, joint_two_handle, theta[1]+pi/2, vrep.simx_opmode_oneshot)
 	time.sleep(0.5)
 	vrep.simxSetJointTargetPosition(clientID, joint_three_handle, theta[2], vrep.simx_opmode_oneshot)
 	time.sleep(0.5)
@@ -210,7 +210,7 @@ vrep.simxStartSimulation(clientID, vrep.simx_opmode_oneshot)
 time.sleep(1)
 
 pi = np.pi
-Goal_joint_angles = np.array([0,pi/2,0.,0.,0.,0.])
+Goal_joint_angles = np.array([0.,0.,0.,0.,0.,0.])
 SetJointPosition(Goal_joint_angles)
 
 # Wait two seconds
