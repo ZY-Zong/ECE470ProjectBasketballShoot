@@ -7,7 +7,7 @@ This is update 4 for ECE 470 project.
 
 ## **1 Introduction**
 
-Task：Demonstrate robot motion with integration of some decision making, planning, and perception.
+Task：Demonstrate robot motion with integration of some decision making, planning, and perception. The robot will keep waiting until the player to pass item to it. We will make the robot throw the item in the future.
 
 ## **2 Methods**
 
@@ -17,20 +17,14 @@ Task：Demonstrate robot motion with integration of some decision making, planni
 vrep_folder/programming/remoteApiBindings/
 ```
 
-- The script code is in the file ```update4.py```. Run the code in a terminal with the Vrep simulator open, the arm will initialize its position. Then the robot will keep waiting until the player to pass item to it. We will make the ro
+- The script code is in the file ```update4.py```. Run the code in a terminal with the Vrep simulator open.
 
 ### 2.1 Decision making
 
-- The robot keeps waiting if nothing is passed to the Jacohand.
+- The robot keeps waiting if nothing is passed to the Jacohand. If no item detected, send back response ```No items, wait!``` and wait. Otherwise, JacoHand will grasp the item and move it to the destination.
 
-```
-sig=sim.getStringSignal('jacoHand')
-if sig~=nil then
-simClearStringSignal('jacoHand')
-if sig=='true' then closing=true else closing=false end
+### 2.2 Decision making
 end
-```
-
 - Then enable the ```JacoHand``` to grasp and release things. In ```update3.py``` file ```JacoHandGrasp``` function, send the command to ```JacoHand``` with codes:
 
 ```
