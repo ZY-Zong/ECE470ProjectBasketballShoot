@@ -27,7 +27,7 @@ vrep_folder/programming/remoteApiBindings/
 
 ### 2.2 Perception
 
-- Robot needs to detect whether there is available items for graspoing. Use ```Proximity Sensor``` to sense the item. First, add a cone proximity sensor to the ```Jacohand```. Then set the ```Scene Object Properties```. The sensor should sense ```all dectectable objects in the scene```. Modify the scan range to make it suitable by click ```Show volume parameters```.
+- Robot needs to detect whether there is available items for graspoing. Use ```Proximity Sensor``` to sense the item. First, add a cone proximity sensor to the ```Jacohand```. Then set the ```Scene Object Properties```. The sensor should sense ```all dectectable objects in the scene```. Modify the scan range to make it suitable by clicking ```Show volume parameters```.
 
 - Enable the sensor in codes. Write a new function ```JacoHandHasItem``` to check whether the proximity sensor dectect yhe item or not. Proximity sensor needs to be run twice: Run with ```simx_opmode_streaming``` mode first time and ```simx_opmode_buffer``` second time. ```time.sleep(1)``` must be added, or two instructions will be done at the same time, resulting the dection fail. ```State``` indicate whether the item is sensed. Idea comes from [this website](https://blog.csdn.net/qq_29945727/article/details/98469621), which tells us how to use vision sensor.
 
