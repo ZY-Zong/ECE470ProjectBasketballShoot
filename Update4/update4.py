@@ -220,7 +220,7 @@ vrep.simxStartSimulation(clientID, vrep.simx_opmode_oneshot)
 time.sleep(1)
 
 pi = np.pi
-Goal_joint_angles = np.array([-pi/2,pi/2.,0.,0.,0.,pi/2])
+Goal_joint_angles = np.array([-pi/2,0.,0.,0.,0.,pi/2])
 SetJointPosition(Goal_joint_angles)
 SetJointPosition(np.array([0.,0.,0.,0.,0.,pi/2]))
 
@@ -242,8 +242,9 @@ while(hasItem == 0):
 		time.sleep(3)
 		JacoHandGrasp()
 		time.sleep(1)
-		SetJointPosition(np.array([-pi/2,pi/2.,0.,0.,0.,pi/2]))
-		JacoHandRelease()
+		SetJointPosition(np.array([-pi/2,0.,0.,0.,0.,pi/2]))
+		# JacoHandRelease()
+		break
 	print("No item, wait!")
 	time.sleep(1)
 
@@ -272,22 +273,22 @@ time.sleep(2)
 # print("your 10 chances are over, simulation will stop\n")
 
 # Throw items
-j = 0
-inc1 = 1.1
-inc2 = 0.4
-inc3 = 0.3
-while(j<7):
-	command[1] -= float(15*inc1)*pi/float(180)
-	command[2] -= float(5*inc2)*pi/float(180)
-	command[3] -= float(5*inc3)*pi/float(180)
-	SetJointPosition(command)
-	j+=1
-	inc1+=0.05
-	inc2+=0.01
-	inc3+=0.01
+# j = 0
+# inc1 = 1.1
+# inc2 = 0.4
+# inc3 = 0.3
+# while(j<7):
+# 	command[1] -= float(15*inc1)*pi/float(180)
+# 	command[2] -= float(5*inc2)*pi/float(180)
+# 	command[3] -= float(5*inc3)*pi/float(180)
+# 	SetJointPosition(command)
+# 	j+=1
+# 	inc1+=0.05
+# 	inc2+=0.01
+# 	inc3+=0.01
 
-while(1):
-	inc1 = 1
+# while(1):
+# 	inc1 = 1
 
 
 # Stop simulation
