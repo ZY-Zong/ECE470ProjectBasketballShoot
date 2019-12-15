@@ -79,7 +79,7 @@ vrep.simxSetStringSignal(clientID,'jacoHand','false',vrep.simx_opmode_oneshot)
 
 - The robot keeps waiting if nothing is passed to the Jacohand. If no item detected, send back response ```No items, wait!``` and wait. Otherwise, JacoHand will grasp the item and move it to the destination.
 
-![block diagram](update4/Diagram.jpg)
+![block diagram](Update4/Diagram.jpg)
 
 ### **Perception**
 
